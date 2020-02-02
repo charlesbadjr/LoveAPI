@@ -35,5 +35,22 @@ app.post('/api/create', (req, res)=> {
     })();
 });
 
+
+
+// Read Crud Action
+
+
+
+
+// Update Crud Action
+
+
+
+
+// Destroy Crud Action
+
+
+
+
 exports.app = functions.https.onRequest(app);
 

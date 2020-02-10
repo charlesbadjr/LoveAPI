@@ -69,6 +69,7 @@ app.get('/api/read', (req, res) => {
                 };
                 response.push(selectedItem);
             }
+              return response;
             });
             return res.status(200).send(response);
         } catch (error) {
@@ -156,14 +157,15 @@ app.get('/lovequotes/read', (req, res) => {
             let query = db.collection('lovequotes');
             let response = [];
             await query.get().then(querySnapshot => {
-            let docs = querySnapshot.docs;
-            for (let doc of docs) {
-                const selectedQuote = {
-                    id: doc.id,
+                 let docs = querySnapshot.docs;
+               for (let doc of docs) {
+                 const selectedItem = {
+                     id: doc.id,
                     quote: doc.data().quote
-                };
-                response.push(selectedQuote);
+                  };
+                response.push(selectedItem);
             }
+              return response;
             });
             return res.status(200).send(response);
         } catch (error) {
@@ -260,7 +262,8 @@ app.put('/lovequotes/update/:quote_id', (req, res) => {
                     };
                     response.push(selectedquotes);
                 }
-                });
+                return response;
+                })
                 return res.status(200).send(response);
             } catch (error) {
                 console.log(error);
